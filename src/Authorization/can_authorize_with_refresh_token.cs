@@ -53,12 +53,6 @@ namespace Gateway.Rest.AcceptanceTests
         }
 
         [Test]
-        public void access_token_is_different()
-        {
-            Assert.AreNotEqual(original_access_token, access_token);
-        }
-
-        [Test]
         public void did_not_received_new_refresh_token()
         {
             Assert.IsNull(refresh_token);
