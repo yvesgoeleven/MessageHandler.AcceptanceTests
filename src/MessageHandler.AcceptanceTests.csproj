@@ -63,8 +63,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Amqp\can_send_paralell_batches_using_amqp_and_json.cs" />
     <Compile Include="Amqp\can_send_batches_using_amqp_and_json.cs" />
     <Compile Include="Amqp\can_send_using_amqp.cs" />
+    <Compile Include="Http\can_send_parallel_batches_using_http_and_json.cs" />
     <Compile Include="Http\can_send_batches_using_http_and_json.cs" />
     <Compile Include="Http\can_send_using_http.cs" />
     <Compile Include="Signalr\can_send_parallel_batches_using_signalr.cs" />
