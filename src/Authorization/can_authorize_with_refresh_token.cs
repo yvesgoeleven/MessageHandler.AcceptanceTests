@@ -11,10 +11,13 @@ namespace Gateway.Rest.AcceptanceTests
         private string refresh_token;
         private int expires_in;
 
+        private string original_access_token;
+        
+
         [SetUp]
         public void when()
         {
-             var client = new RestClient(Settings.BaseUri);
+            var client = new RestClient(Settings.BaseUri);
 
             var request = new RestRequest("authorize", Method.POST);
             request.AddParameter("client_id", Settings.ClientId);
@@ -25,13 +28,14 @@ namespace Gateway.Rest.AcceptanceTests
             var response = client.Execute(request);
             
             var token = JsonConvert.DeserializeObject<dynamic>(response.Content);
-
+            original_access_token = token.access_token;
+            
             var refreshRequest = new RestRequest("authorize", Method.POST);
             refreshRequest.AddParameter("client_id", Settings.ClientId);
             refreshRequest.AddParameter("client_secret", Settings.ClientSecret);
             refreshRequest.AddParameter("scope", Settings.Scope);
             refreshRequest.AddParameter("grant_type", "refresh_token");
-            refreshRequest.AddParameter("refresh_token", token.refresh_token);
+            refreshRequest.AddParameter("refresh_token", (string) token.refresh_token);
 
             response = client.Execute(refreshRequest);
 
@@ -40,13 +44,18 @@ namespace Gateway.Rest.AcceptanceTests
             access_token = token.access_token;
             refresh_token = token.refresh_token;
             expires_in = token.expires_in;
-
         }
 
         [Test]
         public void received_access_token()
         {
             Assert.IsNotNull(access_token);
+        }
+
+        [Test]
+        public void access_token_is_different()
+        {
+            Assert.AreNotEqual(original_access_token, access_token);
         }
 
         [Test]

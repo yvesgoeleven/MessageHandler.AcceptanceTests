@@ -22,8 +22,8 @@ namespace Gateway.Rest.AcceptanceTests
             request.AddHeader(HttpRequestHeader.Authorization.ToString(), header);
 
             request.AddParameter("protocol", "amqp");
-            request.AddParameter("channel", Settings.Channel);
-            request.AddParameter("environment", Settings.Environment);
+            request.AddParameter("channel", Settings.AcceptanceTestsChannel);
+            request.AddParameter("environment", Settings.AcceptanceTestsEnvironment);
 
             var response = client.Execute(request);
 
@@ -54,8 +54,8 @@ namespace Gateway.Rest.AcceptanceTests
             var endpointFor = new
             {
                 protocol = "amqp",
-                channel = Settings.Channel,
-                environment = Settings.Environment
+                channel = Settings.AcceptanceTestsChannel,
+                environment = Settings.AcceptanceTestsEnvironment
             };
 
             request.RequestFormat = DataFormat.Json;
@@ -91,8 +91,8 @@ namespace Gateway.Rest.AcceptanceTests
             var endpointFor = new EndpointRequest // datatype required for serializer
             {
                 Protocol = "amqp",
-                Channel = Settings.Channel,
-                Environment = Settings.Environment
+                Channel = Settings.AcceptanceTestsChannel,
+                Environment = Settings.AcceptanceTestsEnvironment
             };
             request.RequestFormat = DataFormat.Xml;
             request.XmlSerializer = new RestSharp.Serializers.XmlSerializer();

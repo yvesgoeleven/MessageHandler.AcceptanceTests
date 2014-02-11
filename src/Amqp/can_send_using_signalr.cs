@@ -25,8 +25,8 @@ namespace Gateway.Rest.AcceptanceTests
             request.AddHeader(HttpRequestHeader.Authorization.ToString(), header);
 
             request.AddParameter("protocol", "signalr");
-            request.AddParameter("channel", Settings.Channel);
-            request.AddParameter("environment", Settings.Environment);
+            request.AddParameter("channel", Settings.AcceptanceTestsChannel);
+            request.AddParameter("environment", Settings.AcceptanceTestsEnvironment);
 
             var response = client.Execute(request);
 
@@ -49,8 +49,8 @@ namespace Gateway.Rest.AcceptanceTests
             // user passed channel & environment in already
             // when requesting the endpoint, strange to have to pass it again
             channelHubProxy.Invoke(method,
-                Settings.Channel,
-                Settings.Environment,
+                Settings.AcceptanceTestsChannel,
+                Settings.AcceptanceTestsEnvironment,
                 new { Message = "Hello world" }
                 ).Wait(TimeSpan.FromSeconds(30));
             

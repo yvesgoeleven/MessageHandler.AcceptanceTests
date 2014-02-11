@@ -25,8 +25,8 @@ namespace Gateway.Rest.AcceptanceTests
             request.AddHeader(HttpRequestHeader.Authorization.ToString(), header);
 
             request.AddParameter("protocol", "http");
-            request.AddParameter("channel", Settings.Channel);
-            request.AddParameter("environment", Settings.Environment);
+            request.AddParameter("channel", Settings.AcceptanceTestsChannel);
+            request.AddParameter("environment", Settings.AcceptanceTestsEnvironment);
 
             var response = client.Execute(request);
 
