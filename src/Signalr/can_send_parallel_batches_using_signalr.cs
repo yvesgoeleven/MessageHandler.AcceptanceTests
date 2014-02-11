@@ -19,8 +19,8 @@ namespace Gateway.Rest.AcceptanceTests
         [Test]
         public void using_signalr_net_client()
         {
-            //let's see how far we can go
-            for (var k = 0; k < 1000; k += 10)
+            //just increase k to see how far we can go
+            for (var k = 0; k < 100; k += 10)
             {
                 Console.WriteLine("Sending " + k * 1000 + " messages");
 
