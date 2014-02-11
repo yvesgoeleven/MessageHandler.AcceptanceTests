@@ -43,11 +43,11 @@ namespace Gateway.Rest.AcceptanceTests
             var channelHubProxy = hubConnection.CreateHubProxy(hub);
 
             hubConnection.Start(new LongPollingTransport())
-                .Wait(TimeSpan.FromSeconds(30));
+                .Wait();
 
             //keep a total message size limit of 256KB in mind
-            var batch = new Object[10];
-            for (var i = 0; i < 10; i++)
+            var batch = new Object[1000];
+            for (var i = 0; i < 1000; i++)
             {
                 var message = new
                 {
@@ -61,7 +61,7 @@ namespace Gateway.Rest.AcceptanceTests
                 Settings.AcceptanceTestsChannel,
                 Settings.AcceptanceTestsEnvironment,
                 new { Message = batch }
-                ).Wait(TimeSpan.FromSeconds(30));
+                ).Wait();
 
         }
     }
