@@ -46,8 +46,8 @@ namespace Gateway.Rest.AcceptanceTests
                 .Wait(TimeSpan.FromSeconds(30));
 
             //keep a total message size limit of 256KB in mind
-            var batch = new Object[1000];
-            for (var i = 0; i < 1000; i++)
+            var batch = new Object[10];
+            for (var i = 0; i < 10; i++)
             {
                 var message = new
                 {
