@@ -46,26 +46,21 @@ namespace Gateway.Rest.AcceptanceTests
                 .Wait();
 
             //keep a total message size limit of 256KB in mind
-            //var batch = new Object[1];
-            //for (var i = 0; i < 1; i++)
-            //{
-            //    var message = new
-            //    {
-            //        Temperature = 25,
-            //        When = DateTime.UtcNow.ToString("o")
-            //    };
-            //    batch[i] = message;
-            //}
-
-            var message = new
+            var batch = new Object[1000];
+            for (var i = 0; i < 1000; i++)
             {
-                Temperature = 25,
-                When = DateTime.UtcNow.ToString("o")
-            };
+                var message = new
+                {
+                    Temperature = 25,
+                    When = DateTime.UtcNow.ToString("o")
+                };
+                batch[i] = message;
+            }
+
             channelHubProxy.Invoke(method,
                 Settings.AcceptanceTestsChannel,
                 Settings.AcceptanceTestsEnvironment,
-                new { Message = "Hello world" }
+                new { Message = batch }
                 ).Wait();
 
         }
