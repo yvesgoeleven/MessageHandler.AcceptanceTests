@@ -63,18 +63,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Amqp\can_send_batches_using_amqp_and_json.cs" />
     <Compile Include="Amqp\can_send_using_amqp.cs" />
-    <Compile Include="Amqp\can_send_using_http.cs" />
-    <Compile Include="Amqp\can_send_using_signalr.cs" />
+    <Compile Include="Http\can_send_batches_using_http_and_json.cs" />
+    <Compile Include="Http\can_send_using_http.cs" />
+    <Compile Include="Signalr\can_send_batches_using_signalr.cs" />
+    <Compile Include="Signalr\can_send_using_signalr.cs" />
     <Compile Include="AuthOptions\IAuthorize.cs" />
     <Compile Include="AuthOptions\WithClientCredentials.cs" />
     <Compile Include="AuthOptions\WithRefreshToken.cs" />
     <Compile Include="Authorization\can_authorize_with_refresh_token.cs" />
     <Compile Include="Authorization\cannot_authorize_with_invalid_client_credentials.cs" />
     <Compile Include="Authorization\can_authorize_with_valid_client_credentials.cs" />
-    <Compile Include="Endpoints\can_request_new_amqp_endpoints.cs" />
-    <Compile Include="Endpoints\can_request_new_http_endpoints.cs" />
-    <Compile Include="Endpoints\can_request_new_signalr_endpoints.cs" />
+    <Compile Include="Amqp\can_request_new_amqp_endpoints.cs" />
+    <Compile Include="Http\can_request_new_http_endpoints.cs" />
+    <Compile Include="Signalr\can_request_new_signalr_endpoints.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>
