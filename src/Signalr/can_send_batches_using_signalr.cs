@@ -63,6 +63,7 @@ namespace Gateway.Rest.AcceptanceTests
                 new { Message = batch }
                 ).Wait();
 
+            hubConnection.Stop();
         }
     }
 }
