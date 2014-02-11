@@ -43,7 +43,7 @@ namespace Gateway.Rest.AcceptanceTests
             var channelHubProxy = hubConnection.CreateHubProxy(hub);
 
             hubConnection.Start(new LongPollingTransport())
-                .Wait(TimeSpan.FromSeconds(30));
+                .Wait();
 
             // todo, figure out a way to embed channel and environment into the hub, 
             // user passed channel & environment in already
@@ -52,7 +52,7 @@ namespace Gateway.Rest.AcceptanceTests
                 Settings.AcceptanceTestsChannel,
                 Settings.AcceptanceTestsEnvironment,
                 new { Message = "Hello world" }
-                ).Wait(TimeSpan.FromSeconds(30));
+                ).Wait();
             
         }
     }
