@@ -21,6 +21,11 @@ namespace Gateway.Rest.AcceptanceTests
 
             var response = client.Execute(request);
 
+            if (response.StatusCode == 0)
+            {
+
+            }
+
             Assert.AreEqual(HttpStatusCode.Unauthorized, response.StatusCode);
 
             var exception = JsonConvert.DeserializeObject<dynamic>(response.Content);
@@ -40,6 +45,11 @@ namespace Gateway.Rest.AcceptanceTests
 
             var response = client.Execute(request);
 
+            if (response.StatusCode == 0)
+            {
+
+            }
+
             Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);
 
             var exception = JsonConvert.DeserializeObject<dynamic>(response.Content);
@@ -58,6 +68,11 @@ namespace Gateway.Rest.AcceptanceTests
             request.AddParameter("grant_type", "client_credentials");
 
             var response = client.Execute(request);
+
+            if (response.StatusCode == 0)
+            {
+
+            }
 
             Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);
 
@@ -79,6 +94,12 @@ namespace Gateway.Rest.AcceptanceTests
 
             var response = client.Execute(request);
 
+            if (response.StatusCode == 0)
+            {
+
+            }
+
+
             Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);
 
             var exception = JsonConvert.DeserializeObject<dynamic>(response.Content);
@@ -98,6 +119,12 @@ namespace Gateway.Rest.AcceptanceTests
 
             var response = client.Execute(request);
 
+            if (response.StatusCode == 0)
+            {
+
+            }
+
+
             Assert.AreEqual(HttpStatusCode.InternalServerError, response.StatusCode);
 
             var exception = JsonConvert.DeserializeObject<dynamic>(response.Content);
@@ -116,6 +143,11 @@ namespace Gateway.Rest.AcceptanceTests
             request.AddParameter("grant_type", "refresh_token");
 
             var response = client.Execute(request);
+
+            if (response.StatusCode == 0)
+            {
+                
+            }
 
             Assert.AreEqual(HttpStatusCode.InternalServerError, response.StatusCode);
 
