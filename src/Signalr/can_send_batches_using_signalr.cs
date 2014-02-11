@@ -65,7 +65,7 @@ namespace Gateway.Rest.AcceptanceTests
             channelHubProxy.Invoke(method,
                 Settings.AcceptanceTestsChannel,
                 Settings.AcceptanceTestsEnvironment,
-                new { Message = message }
+                new { Message = "Hello world" }
                 ).Wait();
 
         }
