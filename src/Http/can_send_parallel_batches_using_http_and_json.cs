@@ -34,8 +34,8 @@ namespace Gateway.Rest.AcceptanceTests
                 request.AddHeader(HttpRequestHeader.Authorization.ToString(), header);
 
                 request.AddParameter("protocol", "http");
-                request.AddParameter("channel", Settings.AcceptanceTestsChannel);
-                request.AddParameter("environment", Settings.AcceptanceTestsEnvironment);
+                request.AddParameter("channel", Settings.PerformanceTestsChannel);
+                request.AddParameter("environment", Settings.PerformanceTestsEnvironment);
 
                 var response = client.Execute(request);
 
@@ -54,6 +54,7 @@ namespace Gateway.Rest.AcceptanceTests
 
                         request = new RestRequest(path, Method.POST);
                         request.AddHeader(HttpRequestHeader.Authorization.ToString(), header);
+                        request.RequestFormat = DataFormat.Json;
 
                         //keep a total message size limit of 256KB in mind
                         var batch = new Object[1000];
@@ -67,9 +68,9 @@ namespace Gateway.Rest.AcceptanceTests
                             batch[i] = message;
                         }
 
-                        var serialized = JsonConvert.SerializeObject(batch);
+                        //var serialized = JsonConvert.SerializeObject(batch);
 
-                        request.AddBody(serialized);
+                        request.AddBody(batch);
 
                         endPointClient.ExecuteTaskAsync(request).ContinueWith(
                             task =>

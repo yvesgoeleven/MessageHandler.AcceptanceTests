@@ -75,9 +75,9 @@ namespace Gateway.Rest.AcceptanceTests
                         }
 
                         channelHubProxy.Invoke(method,
-                            Settings.AcceptanceTestsChannel,
-                            Settings.AcceptanceTestsEnvironment,
-                            new {Message = batch}
+                            Settings.PerformanceTestsChannel,
+                            Settings.PerformanceTestsEnvironment,
+                            batch
                             )
                             .ContinueWith(r =>
                             {
